@@ -13,7 +13,7 @@ private:
 	segment *s;
 	int points_num;
 public:
-	TCubicSpline();
+	TCubicSpline() {};
 	~TCubicSpline() { delete[] s; };
 
 	void MakeSpline(double *x, double *y, int size);
