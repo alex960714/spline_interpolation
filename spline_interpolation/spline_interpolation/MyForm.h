@@ -137,9 +137,9 @@ private: System::Windows::Forms::Label^  status;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
@@ -207,17 +207,17 @@ private: System::Windows::Forms::Label^  status;
 			this->chart1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			chartArea3->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart1->Legends->Add(legend3);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(0, 2);
 			this->chart1->Name = L"chart1";
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series3->Legend = L"Legend1";
-			series3->Name = L"Series3";
-			this->chart1->Series->Add(series3);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series1->Legend = L"Legend1";
+			series1->Name = L"Series3";
+			this->chart1->Series->Add(series1);
 			this->chart1->Size = System::Drawing::Size(996, 637);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -325,6 +325,7 @@ private: System::Windows::Forms::Label^  status;
 			this->button3->TabIndex = 6;
 			this->button3->Text = L"Очистить всё";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// label27
 			// 
@@ -920,6 +921,18 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	this->x2->Text = ""; this->y2->Text = "";
 	this->x1->Text = ""; this->y1->Text = "";
 	this->status->Text = "Параметры могли быть изменены! Текущий результат может не соответствовать данным параметрам";
+}
+private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+	chart1->Series[L"Series3"]->Points->Clear();
+	this->spline7->Text = "0";
+	this->spline6->Text = "0";
+	this->spline5->Text = "0";
+	this->spline4->Text = "0";
+	this->spline3->Text = "0";
+	this->spline2->Text = "0";
+	this->spline1->Text = "0";
+	button2_Click(sender, e);
+	this->status->Text = "Готово к выполнению";
 }
 };
 }
