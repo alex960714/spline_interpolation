@@ -50,10 +50,10 @@ void TCubicSpline::MakeSpline(double * x, double * y, int size)
 
 void TCubicSpline::GetSpline(segment * seg, int & size)
 {
-	if (seg != NULL)
+	/*if (seg != NULL)
 		delete[] seg;
 
-	seg = new segment[points_num - 1];
+	seg = new segment[points_num - 1];*/
 	for (int i = 0; i < points_num - 1; i++)
 	{
 		seg[i] = s[i+1];
