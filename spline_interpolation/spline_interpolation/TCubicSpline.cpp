@@ -53,17 +53,17 @@ void TCubicSpline::MakeSpline(double * x, double * y, int size)
 	
 	//обратный ход
 	s[size - 1].coeff2 = (x[size - 2] - x[size - 1])*beta[size - 2] 
-		/ ((x[size - 1] - x[size - 2])*alpha[size - 2]);
+		/ ((x[size - 1] - x[size - 2])*alpha[size - 2]*2);
 	for (int i = size - 2; i > 0; i--)
 	{
-		s[i].coeff2 = alpha[i] * s[i + 1].coeff2 + beta[i];
+		s[i].coeff2 = (alpha[i] * s[i + 1].coeff2 + beta[i])/2;
 	}
 
 	for (int i = 1; i < size; i++)
 	{
-		s[i].coeff3 = (s[i].coeff2 - s[i - 1].coeff2) / (x[i] - x[i - 1]);
-		s[i].coeff1 = (x[i] - x[i - 1])*s[i].coeff2 / 2 - (x[i] - x[i - 1])
-			*(x[i] - x[i - 1])*s[i].coeff3 / 6 + (y[i] - y[i - 1]) / (x[i] - x[i - 1]);
+		s[i].coeff3 = 2*(s[i].coeff2 - s[i - 1].coeff2) / (6*(x[i] - x[i - 1]));
+		s[i].coeff1 = (x[i] - x[i - 1])*s[i].coeff2 - (x[i] - x[i - 1])
+			*(x[i] - x[i - 1])*s[i].coeff3 + (y[i] - y[i - 1]) / (x[i] - x[i - 1]);
 	}
 }
 
@@ -88,11 +88,14 @@ double TCubicSpline::GetY(double x)
 	double tmp_x=s[0].x1;
 	if (x < tmp_x)
 		return 0;
-	for (int i = 1; i < points_num-1; i++)
+	for (int i = 1; i < points_num; i++)
 	{
 		tmp_x = s[i].x1;
 		if (tmp_x > x)
-			return s[i].coeff3*x*x*x + s[i].coeff2*x*x + s[i].coeff1*x + s[i].coeff0;
+		{
+			double dx = x - tmp_x;
+			return s[i].coeff3*dx*dx*dx + s[i].coeff2*dx*dx + s[i].coeff1*dx + s[i].coeff0;
+		}
 	}
 	return 0;
 }
