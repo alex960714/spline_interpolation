@@ -218,7 +218,7 @@ private: System::Windows::Forms::Label^  status;
 			series2->Legend = L"Legend1";
 			series2->Name = L"Series3";
 			this->chart1->Series->Add(series2);
-			this->chart1->Size = System::Drawing::Size(962, 635);
+			this->chart1->Size = System::Drawing::Size(996, 637);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
@@ -280,9 +280,9 @@ private: System::Windows::Forms::Label^  status;
 			this->groupBox1->Controls->Add(this->x1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->numericUpDown1);
-			this->groupBox1->Location = System::Drawing::Point(968, 2);
+			this->groupBox1->Location = System::Drawing::Point(1002, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(162, 667);
+			this->groupBox1->Size = System::Drawing::Size(223, 672);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Параметры";
@@ -773,6 +773,7 @@ private: System::Windows::Forms::Label^  status;
 			// 
 			// status
 			// 
+			this->status->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left));
 			this->status->AutoSize = true;
 			this->status->Location = System::Drawing::Point(12, 647);
 			this->status->Name = L"status";
@@ -784,7 +785,7 @@ private: System::Windows::Forms::Label^  status;
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1130, 669);
+			this->ClientSize = System::Drawing::Size(1225, 671);
 			this->Controls->Add(this->status);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->chart1);
@@ -805,7 +806,7 @@ private: System::Windows::Forms::Label^  status;
 			if (seg.coeff3 != 0)
 			{
 				if (seg.coeff3 != 1)
-					str += Convert::ToString(seg.coeff3);
+					str += Convert::ToString(Math::Round(seg.coeff3,2));
 				str += Convert::ToString("x^3 ");
 			}
 			if (seg.coeff2 != 0)
@@ -813,7 +814,7 @@ private: System::Windows::Forms::Label^  status;
 				if (seg.coeff2 > 0)
 					str += Convert::ToString("+ ");
 				if (seg.coeff2 != 1)
-					str += Convert::ToString(seg.coeff2);
+					str += Convert::ToString(Math::Round(seg.coeff2,2));
 				str += Convert::ToString("x^2 ");
 			}
 			if (seg.coeff1 != 0)
@@ -821,14 +822,14 @@ private: System::Windows::Forms::Label^  status;
 				if (seg.coeff1 > 0)
 					str += Convert::ToString("+ ");
 				if (seg.coeff1 != 1)
-					str += Convert::ToString(seg.coeff1);
+					str += Convert::ToString(Math::Round(seg.coeff1,2));
 				str += Convert::ToString("x ");
 			}
 			if (seg.coeff0 != 0)
 			{
 				if (seg.coeff0 > 0)
 					str += Convert::ToString("+ ");
-				str += Convert::ToString(seg.coeff0);
+				str += Convert::ToString(Math::Round(seg.coeff0,2));
 			}
 			if (str == "")
 				str += Convert::ToString("0");
