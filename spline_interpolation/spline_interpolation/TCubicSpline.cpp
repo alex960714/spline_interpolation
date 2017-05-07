@@ -79,3 +79,20 @@ void TCubicSpline::GetSpline(segment * seg, int & size)
 	}
 	size = points_num;
 }
+
+double TCubicSpline::GetY(double x)
+{
+	if (s == NULL)
+		return 0;
+
+	double tmp_x=s[0].x1;
+	if (x < tmp_x)
+		return 0;
+	for (int i = 1; i < points_num-1; i++)
+	{
+		tmp_x = s[i].x1;
+		if (tmp_x > x)
+			return s[i].coeff3*x*x*x + s[i].coeff2*x*x + s[i].coeff1*x + s[i].coeff0;
+	}
+	return 0;
+}

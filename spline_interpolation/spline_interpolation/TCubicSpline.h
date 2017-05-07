@@ -21,6 +21,7 @@ public:
 
 	void MakeSpline(double *x, double *y, int size);
 	void GetSpline(segment *seg, int &size);
+	double GetY(double x);
 };
 
 #endif

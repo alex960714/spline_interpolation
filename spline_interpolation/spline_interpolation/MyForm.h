@@ -137,9 +137,9 @@ private: System::Windows::Forms::Label^  status;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
@@ -207,17 +207,17 @@ private: System::Windows::Forms::Label^  status;
 			this->chart1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			chartArea2->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chart1->Legends->Add(legend2);
+			chartArea3->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea3);
+			legend3->Name = L"Legend1";
+			this->chart1->Legends->Add(legend3);
 			this->chart1->Location = System::Drawing::Point(0, 2);
 			this->chart1->Name = L"chart1";
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series2->Legend = L"Legend1";
-			series2->Name = L"Series3";
-			this->chart1->Series->Add(series2);
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series3->Legend = L"Legend1";
+			series3->Name = L"Series3";
+			this->chart1->Series->Add(series3);
 			this->chart1->Size = System::Drawing::Size(996, 637);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -404,6 +404,7 @@ private: System::Windows::Forms::Label^  status;
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Очистить поля";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// spline4
 			// 
@@ -884,6 +885,12 @@ private: System::Windows::Forms::Label^  status;
 			this->spline2->Text = parseSpline(seg[1]);
 			this->spline1->Text = parseSpline(seg[0]);
 		}
+
+		this->status->Text="Отрисовка сплайна";
+		chart1->Series[L"Series3"]->Points->Clear();
+		double max = x[size - 1];
+		for (double i = x[0]; i < max; i += 0.001)
+			chart1->Series[L"Series3"]->Points->AddXY(i, spl->GetY(i));
 		this->status->Text = "Готово";
 	}
 private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -901,6 +908,17 @@ private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, Syste
 	case 6: this->x6->Show(); this->y6->Show(); this->spline5->Show();
 	case 5: this->x5->Show(); this->y5->Show(); this->spline4->Show();
 	}
+	this->status->Text = "Параметры могли быть изменены! Текущий результат может не соответствовать данным параметрам";
+}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	this->x8->Text = ""; this->y8->Text = "";
+	this->x7->Text = ""; this->y7->Text = "";
+	this->x6->Text = ""; this->y6->Text = "";
+	this->x5->Text = ""; this->y5->Text = "";
+	this->x4->Text = ""; this->y4->Text = "";
+	this->x3->Text = ""; this->y3->Text = "";
+	this->x2->Text = ""; this->y2->Text = "";
+	this->x1->Text = ""; this->y1->Text = "";
 	this->status->Text = "Параметры могли быть изменены! Текущий результат может не соответствовать данным параметрам";
 }
 };
