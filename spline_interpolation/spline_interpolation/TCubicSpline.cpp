@@ -6,6 +6,25 @@ void TCubicSpline::MakeSpline(double * x, double * y, int size)
 	if (s != NULL)
 		delete[] s;
 
+	for (int i = 1; i < size; i++)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			if (x[i] < x[j])
+			{
+				int tmp_x = x[i], tmp_y = y[i];
+				for (int k = i; k > j; k--)
+				{
+					x[k] = x[k - 1];
+					y[k] = y[k - 1];
+				}
+				x[j] = tmp_x;
+				y[j] = tmp_y;
+				break;
+			}
+		}
+	}
+
 	points_num = size;
 	s = new segment[size+1];
 	s[0].x0 = INT_MIN;
