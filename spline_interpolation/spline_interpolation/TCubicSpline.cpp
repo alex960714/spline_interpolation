@@ -52,9 +52,9 @@ void TCubicSpline::MakeSpline(double * x, double * y, int size)
 	}
 	
 	//обратный ход
-	s[size - 1].coeff2 = (x[size - 2] - x[size - 1])*beta[size - 2] 
-		/ ((x[size - 1] - x[size - 2])*alpha[size - 2]*2);
-	for (int i = size - 2; i > 0; i--)
+	/*s[size - 1].coeff2 = (x[size - 2] - x[size - 1])*beta[size - 2] 
+		/ ((x[size - 1] - x[size - 2])*alpha[size - 2]*2);*/
+	for (int i = size - 1; i > 0; i--)
 	{
 		s[i].coeff2 = (alpha[i] * s[i + 1].coeff2 + beta[i])/2;
 	}

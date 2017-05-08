@@ -140,6 +140,7 @@ private: System::Windows::Forms::Label^  status;
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
@@ -213,11 +214,22 @@ private: System::Windows::Forms::Label^  status;
 			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(0, 2);
 			this->chart1->Name = L"chart1";
+			series1->BorderWidth = 2;
 			series1->ChartArea = L"ChartArea1";
-			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->Color = System::Drawing::Color::SeaGreen;
 			series1->Legend = L"Legend1";
-			series1->Name = L"Series3";
+			series1->Name = L"Сплайн";
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
+			series2->Color = System::Drawing::Color::Red;
+			series2->LabelForeColor = System::Drawing::Color::Bisque;
+			series2->Legend = L"Legend1";
+			series2->MarkerSize = 8;
+			series2->Name = L"Точки";
+			series2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::BrightPastel;
 			this->chart1->Series->Add(series1);
+			this->chart1->Series->Add(series2);
 			this->chart1->Size = System::Drawing::Size(996, 637);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -805,33 +817,39 @@ private: System::Windows::Forms::Label^  status;
 		private: System::String^ parseSpline(segment seg)
 		{
 			System::String ^str = gcnew System::String("");
-			if (seg.coeff3 != 0)
+			double tmp3 = seg.coeff3;
+			double tmp2 = seg.coeff2 - seg.coeff3 * 3 * seg.x1;
+			double tmp1 = seg.coeff1 - seg.coeff2 * 2 * seg.x1 
+				+ seg.coeff3 * 3 * seg.x1 * seg.x1;
+			double tmp0 = seg.coeff0 - seg.coeff1 * seg.x1 + seg.coeff2 * seg.x1 * seg.x1
+				- seg.coeff3 * seg.x1 * seg.x1 * seg.x1;
+			if (tmp3 != 0)
 			{
-				if (seg.coeff3 != 1)
-					str += Convert::ToString(Math::Round(seg.coeff3,2));
+				if (tmp3 != 1.0)
+					str += Convert::ToString(Math::Round(tmp3,2));
 				str += Convert::ToString("x^3 ");
 			}
-			if (seg.coeff2 != 0)
+			if (tmp2 != 0)
 			{
-				if (seg.coeff2 > 0)
+				if (tmp2 > 0)
 					str += Convert::ToString("+ ");
-				if (seg.coeff2 != 1)
-					str += Convert::ToString(Math::Round(seg.coeff2,2));
+				if (tmp2 != 1.0)
+					str += Convert::ToString(Math::Round(tmp2,2));
 				str += Convert::ToString("x^2 ");
 			}
-			if (seg.coeff1 != 0)
+			if (tmp1 != 0)
 			{
-				if (seg.coeff1 > 0)
+				if (tmp1 > 0)
 					str += Convert::ToString("+ ");
-				if (seg.coeff1 != 1)
-					str += Convert::ToString(Math::Round(seg.coeff1,2));
+				if (tmp1 != 1.0)
+					str += Convert::ToString(Math::Round(tmp1,2));
 				str += Convert::ToString("x ");
 			}
-			if (seg.coeff0 != 0)
+			if (tmp0 != 0)
 			{
-				if (seg.coeff0 > 0)
+				if (tmp0 > 0)
 					str += Convert::ToString("+ ");
-				str += Convert::ToString(Math::Round(seg.coeff0,2));
+				str += Convert::ToString(Math::Round(tmp0,2));
 			}
 			if (str == "")
 				str += Convert::ToString("0");
@@ -888,10 +906,12 @@ private: System::Windows::Forms::Label^  status;
 		}
 
 		this->status->Text="Отрисовка сплайна";
-		chart1->Series[L"Series3"]->Points->Clear();
+		chart1->Series[L"Сплайн"]->Points->Clear();
 		double max = x[size - 1];
 		for (double i = x[0]; i < max; i += 0.001)
-			chart1->Series[L"Series3"]->Points->AddXY(i, spl->GetY(i));
+			chart1->Series[L"Сплайн"]->Points->AddXY(i, spl->GetY(i));
+		for (int i = 0; i < size; i++)
+			chart1->Series[L"Точки"]->Points->AddXY(x[i], y[i]);
 		this->status->Text = "Готово";
 	}
 private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -923,7 +943,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	this->status->Text = "Параметры могли быть изменены! Текущий результат может не соответствовать данным параметрам";
 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	chart1->Series[L"Series3"]->Points->Clear();
+	chart1->Series[L"Сплайн"]->Points->Clear();
 	this->spline7->Text = "0";
 	this->spline6->Text = "0";
 	this->spline5->Text = "0";
