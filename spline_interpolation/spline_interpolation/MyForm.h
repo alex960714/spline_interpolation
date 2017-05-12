@@ -1,5 +1,6 @@
 #pragma once
 #include "TCubicSpline.h"
+#include <math.h>
 
 namespace spline_interpolation {
 
@@ -55,28 +56,28 @@ namespace spline_interpolation {
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::TextBox^  y8;
 
-	private: System::Windows::Forms::TextBox^  y4;
+
+
 	private: System::Windows::Forms::TextBox^  x8;
 
 
-	private: System::Windows::Forms::TextBox^  y2;
-	private: System::Windows::Forms::TextBox^  y7;
+
+
 
 
 	private: System::Windows::Forms::TextBox^  x4;
 	private: System::Windows::Forms::TextBox^  x7;
 
 
-	private: System::Windows::Forms::TextBox^  y1;
-	private: System::Windows::Forms::TextBox^  y6;
+
+
 
 
 	private: System::Windows::Forms::TextBox^  x6;
 
-	private: System::Windows::Forms::TextBox^  y3;
-	private: System::Windows::Forms::TextBox^  y5;
+
+
 
 
 	private: System::Windows::Forms::TextBox^  x3;
@@ -92,36 +93,50 @@ namespace spline_interpolation {
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Label^  label37;
-	private: System::Windows::Forms::Label^  spline5;
 
 
 
 
 
-	private: System::Windows::Forms::Label^  label27;
-	private: System::Windows::Forms::Label^  label29;
-	private: System::Windows::Forms::Label^  spline7;
 
-	private: System::Windows::Forms::Label^  label31;
-	private: System::Windows::Forms::Label^  label25;
-	private: System::Windows::Forms::Label^  spline6;
 
-	private: System::Windows::Forms::Label^  spline4;
 
-	private: System::Windows::Forms::Label^  spline3;
 
-	private: System::Windows::Forms::Label^  label23;
-	private: System::Windows::Forms::Label^  spline2;
 
-	private: System::Windows::Forms::Label^  label21;
-	private: System::Windows::Forms::Label^  spline1;
 
-	private: System::Windows::Forms::Label^  label19;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 private: System::Windows::Forms::Label^  status;
 
-	private: System::Windows::Forms::Button^  button4;
+
 
 	private: double *x, *y;
+private: System::Windows::Forms::ComboBox^  comboBox1;
+private: System::Windows::Forms::Label^  label22;
+private: System::Windows::Forms::Label^  label20;
+private: System::Windows::Forms::Label^  label21;
+private: System::Windows::Forms::Label^  label19;
+private: System::Windows::Forms::Label^  y1;
+private: System::Windows::Forms::Label^  y8;
+private: System::Windows::Forms::Label^  y4;
+private: System::Windows::Forms::Label^  y7;
+private: System::Windows::Forms::Label^  y3;
+private: System::Windows::Forms::Label^  y6;
+private: System::Windows::Forms::Label^  y2;
+private: System::Windows::Forms::Label^  y5;
+
 	protected:
 
 	private:
@@ -141,29 +156,30 @@ private: System::Windows::Forms::Label^  status;
 			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->label37 = (gcnew System::Windows::Forms::Label());
-			this->spline5 = (gcnew System::Windows::Forms::Label());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->label27 = (gcnew System::Windows::Forms::Label());
-			this->label29 = (gcnew System::Windows::Forms::Label());
-			this->spline7 = (gcnew System::Windows::Forms::Label());
-			this->label31 = (gcnew System::Windows::Forms::Label());
-			this->label18 = (gcnew System::Windows::Forms::Label());
-			this->label25 = (gcnew System::Windows::Forms::Label());
-			this->spline6 = (gcnew System::Windows::Forms::Label());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->spline4 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->spline3 = (gcnew System::Windows::Forms::Label());
-			this->label17 = (gcnew System::Windows::Forms::Label());
-			this->label23 = (gcnew System::Windows::Forms::Label());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->spline2 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->y8 = (gcnew System::Windows::Forms::Label());
+			this->y4 = (gcnew System::Windows::Forms::Label());
+			this->y7 = (gcnew System::Windows::Forms::Label());
+			this->y3 = (gcnew System::Windows::Forms::Label());
+			this->y6 = (gcnew System::Windows::Forms::Label());
+			this->y2 = (gcnew System::Windows::Forms::Label());
+			this->y5 = (gcnew System::Windows::Forms::Label());
+			this->y1 = (gcnew System::Windows::Forms::Label());
+			this->label22 = (gcnew System::Windows::Forms::Label());
+			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->label21 = (gcnew System::Windows::Forms::Label());
+			this->label19 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->label37 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->label18 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
@@ -173,24 +189,14 @@ private: System::Windows::Forms::Label^  status;
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->spline1 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->y8 = (gcnew System::Windows::Forms::TextBox());
-			this->y4 = (gcnew System::Windows::Forms::TextBox());
 			this->x8 = (gcnew System::Windows::Forms::TextBox());
-			this->y2 = (gcnew System::Windows::Forms::TextBox());
-			this->y7 = (gcnew System::Windows::Forms::TextBox());
 			this->x4 = (gcnew System::Windows::Forms::TextBox());
 			this->x7 = (gcnew System::Windows::Forms::TextBox());
-			this->y1 = (gcnew System::Windows::Forms::TextBox());
-			this->y6 = (gcnew System::Windows::Forms::TextBox());
 			this->x6 = (gcnew System::Windows::Forms::TextBox());
-			this->y3 = (gcnew System::Windows::Forms::TextBox());
-			this->y5 = (gcnew System::Windows::Forms::TextBox());
 			this->x3 = (gcnew System::Windows::Forms::TextBox());
 			this->x5 = (gcnew System::Windows::Forms::TextBox());
 			this->x2 = (gcnew System::Windows::Forms::TextBox());
@@ -228,8 +234,14 @@ private: System::Windows::Forms::Label^  status;
 			series2->MarkerSize = 8;
 			series2->Name = L"Точки";
 			series2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::BrightPastel;
+			series3->BorderWidth = 2;
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series3->Legend = L"Legend1";
+			series3->Name = L"Функция";
 			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
+			this->chart1->Series->Add(series3);
 			this->chart1->Size = System::Drawing::Size(996, 637);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -238,27 +250,27 @@ private: System::Windows::Forms::Label^  status;
 			// 
 			this->groupBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->groupBox1->Controls->Add(this->button4);
-			this->groupBox1->Controls->Add(this->label37);
-			this->groupBox1->Controls->Add(this->spline5);
-			this->groupBox1->Controls->Add(this->button3);
-			this->groupBox1->Controls->Add(this->label27);
-			this->groupBox1->Controls->Add(this->label29);
-			this->groupBox1->Controls->Add(this->spline7);
-			this->groupBox1->Controls->Add(this->label31);
-			this->groupBox1->Controls->Add(this->label18);
-			this->groupBox1->Controls->Add(this->label25);
-			this->groupBox1->Controls->Add(this->spline6);
-			this->groupBox1->Controls->Add(this->button2);
-			this->groupBox1->Controls->Add(this->spline4);
-			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Controls->Add(this->spline3);
-			this->groupBox1->Controls->Add(this->label17);
-			this->groupBox1->Controls->Add(this->label23);
-			this->groupBox1->Controls->Add(this->label15);
-			this->groupBox1->Controls->Add(this->spline2);
-			this->groupBox1->Controls->Add(this->label13);
+			this->groupBox1->Controls->Add(this->y8);
+			this->groupBox1->Controls->Add(this->y4);
+			this->groupBox1->Controls->Add(this->y7);
+			this->groupBox1->Controls->Add(this->y3);
+			this->groupBox1->Controls->Add(this->y6);
+			this->groupBox1->Controls->Add(this->y2);
+			this->groupBox1->Controls->Add(this->y5);
+			this->groupBox1->Controls->Add(this->y1);
+			this->groupBox1->Controls->Add(this->label22);
+			this->groupBox1->Controls->Add(this->label20);
 			this->groupBox1->Controls->Add(this->label21);
+			this->groupBox1->Controls->Add(this->label19);
+			this->groupBox1->Controls->Add(this->comboBox1);
+			this->groupBox1->Controls->Add(this->label37);
+			this->groupBox1->Controls->Add(this->button3);
+			this->groupBox1->Controls->Add(this->label18);
+			this->groupBox1->Controls->Add(this->button2);
+			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Controls->Add(this->label17);
+			this->groupBox1->Controls->Add(this->label15);
+			this->groupBox1->Controls->Add(this->label13);
 			this->groupBox1->Controls->Add(this->label11);
 			this->groupBox1->Controls->Add(this->label9);
 			this->groupBox1->Controls->Add(this->label7);
@@ -268,24 +280,14 @@ private: System::Windows::Forms::Label^  status;
 			this->groupBox1->Controls->Add(this->label14);
 			this->groupBox1->Controls->Add(this->label12);
 			this->groupBox1->Controls->Add(this->label10);
-			this->groupBox1->Controls->Add(this->spline1);
 			this->groupBox1->Controls->Add(this->label8);
-			this->groupBox1->Controls->Add(this->label19);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->y8);
-			this->groupBox1->Controls->Add(this->y4);
 			this->groupBox1->Controls->Add(this->x8);
-			this->groupBox1->Controls->Add(this->y2);
-			this->groupBox1->Controls->Add(this->y7);
 			this->groupBox1->Controls->Add(this->x4);
 			this->groupBox1->Controls->Add(this->x7);
-			this->groupBox1->Controls->Add(this->y1);
-			this->groupBox1->Controls->Add(this->y6);
 			this->groupBox1->Controls->Add(this->x6);
-			this->groupBox1->Controls->Add(this->y3);
-			this->groupBox1->Controls->Add(this->y5);
 			this->groupBox1->Controls->Add(this->x3);
 			this->groupBox1->Controls->Add(this->x5);
 			this->groupBox1->Controls->Add(this->x2);
@@ -299,35 +301,147 @@ private: System::Windows::Forms::Label^  status;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Параметры";
 			// 
-			// button4
+			// y8
 			// 
-			this->button4->Location = System::Drawing::Point(16, 394);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(128, 23);
-			this->button4->TabIndex = 8;
-			this->button4->Text = L"Сохранить в файл";
-			this->button4->UseVisualStyleBackColor = true;
+			this->y8->BackColor = System::Drawing::SystemColors::Control;
+			this->y8->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y8->Location = System::Drawing::Point(111, 280);
+			this->y8->Name = L"y8";
+			this->y8->Size = System::Drawing::Size(43, 20);
+			this->y8->TabIndex = 12;
+			this->y8->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->y8->Visible = false;
+			// 
+			// y4
+			// 
+			this->y4->BackColor = System::Drawing::SystemColors::Control;
+			this->y4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y4->Location = System::Drawing::Point(110, 178);
+			this->y4->Name = L"y4";
+			this->y4->Size = System::Drawing::Size(43, 20);
+			this->y4->TabIndex = 12;
+			this->y4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// y7
+			// 
+			this->y7->BackColor = System::Drawing::SystemColors::Control;
+			this->y7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y7->Location = System::Drawing::Point(111, 254);
+			this->y7->Name = L"y7";
+			this->y7->Size = System::Drawing::Size(43, 20);
+			this->y7->TabIndex = 12;
+			this->y7->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->y7->Visible = false;
+			// 
+			// y3
+			// 
+			this->y3->BackColor = System::Drawing::SystemColors::Control;
+			this->y3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y3->Location = System::Drawing::Point(110, 152);
+			this->y3->Name = L"y3";
+			this->y3->Size = System::Drawing::Size(43, 20);
+			this->y3->TabIndex = 12;
+			this->y3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// y6
+			// 
+			this->y6->BackColor = System::Drawing::SystemColors::Control;
+			this->y6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y6->Location = System::Drawing::Point(111, 230);
+			this->y6->Name = L"y6";
+			this->y6->Size = System::Drawing::Size(43, 20);
+			this->y6->TabIndex = 12;
+			this->y6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->y6->Visible = false;
+			// 
+			// y2
+			// 
+			this->y2->BackColor = System::Drawing::SystemColors::Control;
+			this->y2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y2->Location = System::Drawing::Point(110, 128);
+			this->y2->Name = L"y2";
+			this->y2->Size = System::Drawing::Size(43, 20);
+			this->y2->TabIndex = 12;
+			this->y2->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// y5
+			// 
+			this->y5->BackColor = System::Drawing::SystemColors::Control;
+			this->y5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y5->Location = System::Drawing::Point(111, 204);
+			this->y5->Name = L"y5";
+			this->y5->Size = System::Drawing::Size(43, 20);
+			this->y5->TabIndex = 12;
+			this->y5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->y5->Visible = false;
+			// 
+			// y1
+			// 
+			this->y1->BackColor = System::Drawing::SystemColors::Control;
+			this->y1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->y1->Location = System::Drawing::Point(110, 102);
+			this->y1->Name = L"y1";
+			this->y1->Size = System::Drawing::Size(43, 20);
+			this->y1->TabIndex = 12;
+			this->y1->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			// 
+			// label22
+			// 
+			this->label22->AutoSize = true;
+			this->label22->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label22->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label22->Location = System::Drawing::Point(16, 533);
+			this->label22->Name = L"label22";
+			this->label22->Size = System::Drawing::Size(15, 15);
+			this->label22->TabIndex = 11;
+			this->label22->Text = L"0";
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label20->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->label20->Location = System::Drawing::Point(16, 489);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(15, 15);
+			this->label20->TabIndex = 11;
+			this->label20->Text = L"0";
+			// 
+			// label21
+			// 
+			this->label21->AutoSize = true;
+			this->label21->Location = System::Drawing::Point(13, 516);
+			this->label21->Name = L"label21";
+			this->label21->Size = System::Drawing::Size(162, 13);
+			this->label21->TabIndex = 10;
+			this->label21->Text = L"Максисмальная погрешность:";
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(13, 472);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(122, 13);
+			this->label19->TabIndex = 10;
+			this->label19->Text = L"Средняя погрешность:";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"sin(x)", L"cos(x)" });
+			this->comboBox1->Location = System::Drawing::Point(16, 439);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 21);
+			this->comboBox1->TabIndex = 9;
 			// 
 			// label37
 			// 
 			this->label37->AutoSize = true;
 			this->label37->Location = System::Drawing::Point(13, 422);
 			this->label37->Name = L"label37";
-			this->label37->Size = System::Drawing::Size(116, 13);
+			this->label37->Size = System::Drawing::Size(56, 13);
 			this->label37->TabIndex = 7;
-			this->label37->Text = L"Фрагменты сплайна:";
-			// 
-			// spline5
-			// 
-			this->spline5->AutoSize = true;
-			this->spline5->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->spline5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->spline5->Location = System::Drawing::Point(35, 537);
-			this->spline5->Name = L"spline5";
-			this->spline5->Size = System::Drawing::Size(15, 15);
-			this->spline5->TabIndex = 1;
-			this->spline5->Text = L"0";
-			this->spline5->Visible = false;
+			this->label37->Text = L"Функция:";
 			// 
 			// button3
 			// 
@@ -339,46 +453,6 @@ private: System::Windows::Forms::Label^  status;
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
-			// label27
-			// 
-			this->label27->AutoSize = true;
-			this->label27->Location = System::Drawing::Point(13, 537);
-			this->label27->Name = L"label27";
-			this->label27->Size = System::Drawing::Size(16, 13);
-			this->label27->TabIndex = 0;
-			this->label27->Text = L"5:";
-			// 
-			// label29
-			// 
-			this->label29->AutoSize = true;
-			this->label29->BackColor = System::Drawing::SystemColors::Control;
-			this->label29->Location = System::Drawing::Point(14, 561);
-			this->label29->Name = L"label29";
-			this->label29->Size = System::Drawing::Size(16, 13);
-			this->label29->TabIndex = 1;
-			this->label29->Text = L"6:";
-			// 
-			// spline7
-			// 
-			this->spline7->AutoSize = true;
-			this->spline7->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->spline7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->spline7->Location = System::Drawing::Point(35, 583);
-			this->spline7->Name = L"spline7";
-			this->spline7->Size = System::Drawing::Size(15, 15);
-			this->spline7->TabIndex = 1;
-			this->spline7->Text = L"0";
-			this->spline7->Visible = false;
-			// 
-			// label31
-			// 
-			this->label31->AutoSize = true;
-			this->label31->Location = System::Drawing::Point(14, 583);
-			this->label31->Name = L"label31";
-			this->label31->Size = System::Drawing::Size(16, 13);
-			this->label31->TabIndex = 0;
-			this->label31->Text = L"7:";
-			// 
 			// label18
 			// 
 			this->label18->AutoSize = true;
@@ -387,27 +461,6 @@ private: System::Windows::Forms::Label^  status;
 			this->label18->Size = System::Drawing::Size(103, 13);
 			this->label18->TabIndex = 5;
 			this->label18->Text = L"Координаты точек:";
-			// 
-			// label25
-			// 
-			this->label25->AutoSize = true;
-			this->label25->Location = System::Drawing::Point(13, 513);
-			this->label25->Name = L"label25";
-			this->label25->Size = System::Drawing::Size(16, 13);
-			this->label25->TabIndex = 0;
-			this->label25->Text = L"4:";
-			// 
-			// spline6
-			// 
-			this->spline6->AutoSize = true;
-			this->spline6->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->spline6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->spline6->Location = System::Drawing::Point(35, 561);
-			this->spline6->Name = L"spline6";
-			this->spline6->Size = System::Drawing::Size(15, 15);
-			this->spline6->TabIndex = 1;
-			this->spline6->Text = L"0";
-			this->spline6->Visible = false;
 			// 
 			// button2
 			// 
@@ -419,18 +472,6 @@ private: System::Windows::Forms::Label^  status;
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
-			// spline4
-			// 
-			this->spline4->AutoSize = true;
-			this->spline4->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->spline4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->spline4->Location = System::Drawing::Point(35, 513);
-			this->spline4->Name = L"spline4";
-			this->spline4->Size = System::Drawing::Size(15, 15);
-			this->spline4->TabIndex = 0;
-			this->spline4->Text = L"0";
-			this->spline4->Visible = false;
-			// 
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(16, 306);
@@ -441,17 +482,6 @@ private: System::Windows::Forms::Label^  status;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
-			// spline3
-			// 
-			this->spline3->AutoSize = true;
-			this->spline3->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->spline3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->spline3->Location = System::Drawing::Point(35, 489);
-			this->spline3->Name = L"spline3";
-			this->spline3->Size = System::Drawing::Size(15, 15);
-			this->spline3->TabIndex = 1;
-			this->spline3->Text = L"0";
-			// 
 			// label17
 			// 
 			this->label17->AutoSize = true;
@@ -460,15 +490,6 @@ private: System::Windows::Forms::Label^  status;
 			this->label17->Size = System::Drawing::Size(21, 13);
 			this->label17->TabIndex = 3;
 			this->label17->Text = L"y8:";
-			// 
-			// label23
-			// 
-			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(13, 489);
-			this->label23->Name = L"label23";
-			this->label23->Size = System::Drawing::Size(16, 13);
-			this->label23->TabIndex = 0;
-			this->label23->Text = L"3:";
 			// 
 			// label15
 			// 
@@ -479,17 +500,6 @@ private: System::Windows::Forms::Label^  status;
 			this->label15->TabIndex = 3;
 			this->label15->Text = L"y7:";
 			// 
-			// spline2
-			// 
-			this->spline2->AutoSize = true;
-			this->spline2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->spline2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->spline2->Location = System::Drawing::Point(35, 466);
-			this->spline2->Name = L"spline2";
-			this->spline2->Size = System::Drawing::Size(15, 15);
-			this->spline2->TabIndex = 1;
-			this->spline2->Text = L"0";
-			// 
 			// label13
 			// 
 			this->label13->AutoSize = true;
@@ -498,15 +508,6 @@ private: System::Windows::Forms::Label^  status;
 			this->label13->Size = System::Drawing::Size(21, 13);
 			this->label13->TabIndex = 3;
 			this->label13->Text = L"y6:";
-			// 
-			// label21
-			// 
-			this->label21->AutoSize = true;
-			this->label21->Location = System::Drawing::Point(13, 466);
-			this->label21->Name = L"label21";
-			this->label21->Size = System::Drawing::Size(16, 13);
-			this->label21->TabIndex = 0;
-			this->label21->Text = L"2:";
 			// 
 			// label11
 			// 
@@ -589,17 +590,6 @@ private: System::Windows::Forms::Label^  status;
 			this->label10->TabIndex = 3;
 			this->label10->Text = L"x5:";
 			// 
-			// spline1
-			// 
-			this->spline1->AutoSize = true;
-			this->spline1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->spline1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->spline1->Location = System::Drawing::Point(35, 444);
-			this->spline1->Name = L"spline1";
-			this->spline1->Size = System::Drawing::Size(15, 15);
-			this->spline1->TabIndex = 1;
-			this->spline1->Text = L"0";
-			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
@@ -608,15 +598,6 @@ private: System::Windows::Forms::Label^  status;
 			this->label8->Size = System::Drawing::Size(21, 13);
 			this->label8->TabIndex = 3;
 			this->label8->Text = L"x4:";
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(13, 444);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(16, 13);
-			this->label19->TabIndex = 0;
-			this->label19->Text = L"1:";
 			// 
 			// label6
 			// 
@@ -645,21 +626,6 @@ private: System::Windows::Forms::Label^  status;
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"x1:";
 			// 
-			// y8
-			// 
-			this->y8->Location = System::Drawing::Point(109, 280);
-			this->y8->Name = L"y8";
-			this->y8->Size = System::Drawing::Size(37, 20);
-			this->y8->TabIndex = 2;
-			this->y8->Visible = false;
-			// 
-			// y4
-			// 
-			this->y4->Location = System::Drawing::Point(109, 178);
-			this->y4->Name = L"y4";
-			this->y4->Size = System::Drawing::Size(37, 20);
-			this->y4->TabIndex = 2;
-			// 
 			// x8
 			// 
 			this->x8->Location = System::Drawing::Point(40, 280);
@@ -667,21 +633,6 @@ private: System::Windows::Forms::Label^  status;
 			this->x8->Size = System::Drawing::Size(37, 20);
 			this->x8->TabIndex = 2;
 			this->x8->Visible = false;
-			// 
-			// y2
-			// 
-			this->y2->Location = System::Drawing::Point(109, 128);
-			this->y2->Name = L"y2";
-			this->y2->Size = System::Drawing::Size(37, 20);
-			this->y2->TabIndex = 2;
-			// 
-			// y7
-			// 
-			this->y7->Location = System::Drawing::Point(109, 254);
-			this->y7->Name = L"y7";
-			this->y7->Size = System::Drawing::Size(37, 20);
-			this->y7->TabIndex = 2;
-			this->y7->Visible = false;
 			// 
 			// x4
 			// 
@@ -698,21 +649,6 @@ private: System::Windows::Forms::Label^  status;
 			this->x7->TabIndex = 2;
 			this->x7->Visible = false;
 			// 
-			// y1
-			// 
-			this->y1->Location = System::Drawing::Point(109, 102);
-			this->y1->Name = L"y1";
-			this->y1->Size = System::Drawing::Size(37, 20);
-			this->y1->TabIndex = 2;
-			// 
-			// y6
-			// 
-			this->y6->Location = System::Drawing::Point(109, 228);
-			this->y6->Name = L"y6";
-			this->y6->Size = System::Drawing::Size(37, 20);
-			this->y6->TabIndex = 2;
-			this->y6->Visible = false;
-			// 
 			// x6
 			// 
 			this->x6->Location = System::Drawing::Point(40, 230);
@@ -720,21 +656,6 @@ private: System::Windows::Forms::Label^  status;
 			this->x6->Size = System::Drawing::Size(37, 20);
 			this->x6->TabIndex = 2;
 			this->x6->Visible = false;
-			// 
-			// y3
-			// 
-			this->y3->Location = System::Drawing::Point(110, 152);
-			this->y3->Name = L"y3";
-			this->y3->Size = System::Drawing::Size(37, 20);
-			this->y3->TabIndex = 2;
-			// 
-			// y5
-			// 
-			this->y5->Location = System::Drawing::Point(109, 204);
-			this->y5->Name = L"y5";
-			this->y5->Size = System::Drawing::Size(37, 20);
-			this->y5->TabIndex = 2;
-			this->y5->Visible = false;
 			// 
 			// x3
 			// 
@@ -855,6 +776,14 @@ private: System::Windows::Forms::Label^  status;
 				str += Convert::ToString("0");
 			return str;
 		}
+	private: double func(double val)
+	{
+		switch ((int)this->comboBox1->SelectedIndex)
+		{
+		case 0: return sin(val);
+		case 1:	return cos(val);
+		}
+	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		int size = (int)this->numericUpDown1->Value;
 		System::FormatException^ exc;
@@ -869,14 +798,14 @@ private: System::Windows::Forms::Label^  status;
 		try {
 			switch (size)
 			{
-			case 8: x[7] = Convert::ToDouble(this->x8->Text); y[7] = Convert::ToDouble(this->y8->Text);
-			case 7: x[6] = Convert::ToDouble(this->x7->Text); y[6] = Convert::ToDouble(this->y7->Text);
-			case 6: x[5] = Convert::ToDouble(this->x6->Text); y[5] = Convert::ToDouble(this->y6->Text);
-			case 5: x[4] = Convert::ToDouble(this->x5->Text); y[4] = Convert::ToDouble(this->y5->Text);
-			case 4: x[3] = Convert::ToDouble(this->x4->Text); y[3] = Convert::ToDouble(this->y4->Text);
-				x[2] = Convert::ToDouble(this->x3->Text); y[2] = Convert::ToDouble(this->y3->Text);
-				x[1] = Convert::ToDouble(this->x2->Text); y[1] = Convert::ToDouble(this->y2->Text);
-				x[0] = Convert::ToDouble(this->x1->Text); y[0] = Convert::ToDouble(this->y1->Text);
+			case 8: x[7] = Convert::ToDouble(this->x8->Text); //y[7] = Convert::ToDouble(this->y8->Text);
+			case 7: x[6] = Convert::ToDouble(this->x7->Text); //y[6] = Convert::ToDouble(this->y7->Text);
+			case 6: x[5] = Convert::ToDouble(this->x6->Text); //y[5] = Convert::ToDouble(this->y6->Text);
+			case 5: x[4] = Convert::ToDouble(this->x5->Text); //y[4] = Convert::ToDouble(this->y5->Text);
+			case 4: x[3] = Convert::ToDouble(this->x4->Text); //y[3] = Convert::ToDouble(this->y4->Text);
+				x[2] = Convert::ToDouble(this->x3->Text); //y[2] = Convert::ToDouble(this->y3->Text);
+				x[1] = Convert::ToDouble(this->x2->Text); //y[1] = Convert::ToDouble(this->y2->Text);
+				x[0] = Convert::ToDouble(this->x1->Text); //y[0] = Convert::ToDouble(this->y1->Text);
 			}
 		}
 		catch (System::FormatException^ e)
@@ -886,7 +815,13 @@ private: System::Windows::Forms::Label^  status;
 			return;
 		}
 
+		chart1->Series[L"Сплайн"]->Points->Clear();
+		chart1->Series[L"Функция"]->Points->Clear();
+		chart1->Series[L"Точки"]->Points->Clear();
+
 		this->status->Text = "Выполняются вычисления";
+		for (int i = 0; i < size; i++)
+			y[i] = func(x[i]);
 
 		TCubicSpline* spl = new TCubicSpline();
 		spl->MakeSpline(x, y, size);
@@ -896,38 +831,52 @@ private: System::Windows::Forms::Label^  status;
 
 		switch (size)
 		{
-		case 8: this->spline7->Text = parseSpline(seg[6]);
-		case 7: this->spline6->Text = parseSpline(seg[5]);
-		case 6: this->spline5->Text = parseSpline(seg[4]);
-		case 5: this->spline4->Text = parseSpline(seg[3]);
-		case 4: this->spline3->Text = parseSpline(seg[2]);
-			this->spline2->Text = parseSpline(seg[1]);
-			this->spline1->Text = parseSpline(seg[0]);
+		case 8: this->y8->Text = Convert::ToString(y[7]); this->x8->Text = Convert::ToString(x[7]);
+		case 7: this->y7->Text = Convert::ToString(y[6]); this->x7->Text = Convert::ToString(x[6]);
+		case 6: this->y6->Text = Convert::ToString(y[5]); this->x6->Text = Convert::ToString(x[5]);
+		case 5: this->y5->Text = Convert::ToString(y[4]); this->x5->Text = Convert::ToString(x[4]);
+		case 4: this->y4->Text = Convert::ToString(y[3]); this->x4->Text = Convert::ToString(x[3]);
+			this->y3->Text = Convert::ToString(y[2]); this->x3->Text = Convert::ToString(x[2]);
+			this->y2->Text = Convert::ToString(y[1]); this->x2->Text = Convert::ToString(x[1]);
+			this->y1->Text = Convert::ToString(y[0]); this->x1->Text = Convert::ToString(x[0]);
 		}
 
 		this->status->Text="Отрисовка сплайна";
+		double spl_val, func_val, err_av = 0, err_max = 0;
 		chart1->Series[L"Сплайн"]->Points->Clear();
 		double max = x[size - 1];
 		for (double i = x[0]; i < max; i += 0.001)
-			chart1->Series[L"Сплайн"]->Points->AddXY(i, spl->GetY(i));
+		{
+			spl_val = spl->GetY(i);
+			func_val = func(i);
+			chart1->Series[L"Сплайн"]->Points->AddXY(i, spl_val);
+			chart1->Series[L"Функция"]->Points->AddXY(i, func_val);
+
+			err_av += fabs(spl_val - func_val);
+			if (err_max < spl_val - func_val)
+				err_max = spl_val - func_val;
+		}
 		for (int i = 0; i < size; i++)
 			chart1->Series[L"Точки"]->Points->AddXY(x[i], y[i]);
+		err_av *= 0.001 / (max - x[0]);
+		this->label20->Text = Convert::ToString(err_av);
+		this->label22->Text = Convert::ToString(err_max);
 		this->status->Text = "Готово";
 	}
 private: System::Void numericUpDown1_ValueChanged(System::Object^  sender, System::EventArgs^  e) {
 	switch ((int)(this->numericUpDown1->Value))
 	{
-	case 4: this->x5->Hide(); this->y5->Hide(); this->spline4->Hide();
-	case 5: this->x6->Hide(); this->y6->Hide(); this->spline5->Hide();
-	case 6: this->x7->Hide(); this->y7->Hide(); this->spline6->Hide();
-	case 7: this->x8->Hide(); this->y8->Hide(); this->spline7->Hide();
+	case 4: this->x5->Hide(); this->y5->Hide(); //this->spline4->Hide();
+	case 5: this->x6->Hide(); this->y6->Hide();// this->spline5->Hide();
+	case 6: this->x7->Hide(); this->y7->Hide(); //this->spline6->Hide();
+	case 7: this->x8->Hide(); this->y8->Hide(); //this->spline7->Hide();
 	}
 	switch ((int)(this->numericUpDown1->Value))
 	{
-	case 8: this->x8->Show(); this->y8->Show(); this->spline7->Show();
-	case 7: this->x7->Show(); this->y7->Show(); this->spline6->Show();
-	case 6: this->x6->Show(); this->y6->Show(); this->spline5->Show();
-	case 5: this->x5->Show(); this->y5->Show(); this->spline4->Show();
+	case 8: this->x8->Show(); this->y8->Show(); //this->spline7->Show();
+	case 7: this->x7->Show(); this->y7->Show(); //this->spline6->Show();
+	case 6: this->x6->Show(); this->y6->Show(); //this->spline5->Show();
+	case 5: this->x5->Show(); this->y5->Show(); //this->spline4->Show();
 	}
 	this->status->Text = "Параметры могли быть изменены! Текущий результат может не соответствовать данным параметрам";
 }
@@ -942,16 +891,20 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 	this->x1->Text = ""; this->y1->Text = "";
 	this->status->Text = "Параметры могли быть изменены! Текущий результат может не соответствовать данным параметрам";
 }
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	chart1->Series[L"Сплайн"]->Points->Clear();
-	this->spline7->Text = "0";
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		chart1->Series[L"Сплайн"]->Points->Clear();
+		chart1->Series[L"Функция"]->Points->Clear();
+		chart1->Series[L"Точки"]->Points->Clear();
+	/*this->spline7->Text = "0";
 	this->spline6->Text = "0";
 	this->spline5->Text = "0";
 	this->spline4->Text = "0";
 	this->spline3->Text = "0";
 	this->spline2->Text = "0";
-	this->spline1->Text = "0";
+	this->spline1->Text = "0";*/
 	button2_Click(sender, e);
+	this->label20->Text = "0";
+	this->label22->Text = "0";
 	this->status->Text = "Готово к выполнению";
 }
 };

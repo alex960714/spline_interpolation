@@ -12,7 +12,7 @@ void TCubicSpline::MakeSpline(double * x, double * y, int size)
 		{
 			if (x[i] < x[j])
 			{
-				int tmp_x = x[i], tmp_y = y[i];
+				double tmp_x = x[i], tmp_y = y[i];
 				for (int k = i; k > j; k--)
 				{
 					x[k] = x[k - 1];
