@@ -152,11 +152,11 @@ private: System::Windows::Forms::Label^  y5;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^  legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^  series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^  chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^  legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^  series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->y8 = (gcnew System::Windows::Forms::Label());
@@ -214,34 +214,34 @@ private: System::Windows::Forms::Label^  y5;
 			this->chart1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			chartArea1->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->chart1->Legends->Add(legend1);
+			chartArea2->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart1->Legends->Add(legend2);
 			this->chart1->Location = System::Drawing::Point(0, 2);
 			this->chart1->Name = L"chart1";
-			series1->BorderWidth = 2;
-			series1->ChartArea = L"ChartArea1";
-			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series1->Color = System::Drawing::Color::SeaGreen;
-			series1->Legend = L"Legend1";
-			series1->Name = L"Сплайн";
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
-			series2->Color = System::Drawing::Color::Red;
-			series2->LabelForeColor = System::Drawing::Color::Bisque;
-			series2->Legend = L"Legend1";
-			series2->MarkerSize = 8;
-			series2->Name = L"Точки";
-			series2->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::BrightPastel;
-			series3->BorderWidth = 2;
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series3->Legend = L"Legend1";
-			series3->Name = L"Функция";
-			this->chart1->Series->Add(series1);
-			this->chart1->Series->Add(series2);
-			this->chart1->Series->Add(series3);
+			series4->BorderWidth = 2;
+			series4->ChartArea = L"ChartArea1";
+			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series4->Color = System::Drawing::Color::SeaGreen;
+			series4->Legend = L"Legend1";
+			series4->Name = L"Сплайн";
+			series5->ChartArea = L"ChartArea1";
+			series5->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Point;
+			series5->Color = System::Drawing::Color::Red;
+			series5->LabelForeColor = System::Drawing::Color::Bisque;
+			series5->Legend = L"Legend1";
+			series5->MarkerSize = 8;
+			series5->Name = L"Точки";
+			series5->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::BrightPastel;
+			series6->BorderWidth = 2;
+			series6->ChartArea = L"ChartArea1";
+			series6->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series6->Legend = L"Legend1";
+			series6->Name = L"Функция";
+			this->chart1->Series->Add(series4);
+			this->chart1->Series->Add(series5);
+			this->chart1->Series->Add(series6);
 			this->chart1->Size = System::Drawing::Size(996, 637);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -822,6 +822,33 @@ private: System::Windows::Forms::Label^  y5;
 		this->status->Text = "Выполняются вычисления";
 		for (int i = 0; i < size; i++)
 			y[i] = func(x[i]);
+
+		for (int i = 1; i < size; i++)
+		{
+			for (int j = 0; j < i; j++)
+			{
+				if (x[i] < x[j])
+				{
+					double tmp_x = x[i], tmp_y = y[i];
+					for (int k = i; k > j; k--)
+					{
+						x[k] = x[k - 1];
+						y[k] = y[k - 1];
+					}
+					x[j] = tmp_x;
+					y[j] = tmp_y;
+					break;
+				}
+			}
+		}
+
+		for(int i=1;i<size;i++)
+			if (x[i - 1] == x[i])
+			{
+				MessageBox::Show("Некорректные данные!\nНекоторые точки имеют одинаковую координату x.\nПроверьте данные и повторите попытку");
+				this->status->Text = "Некоторые точки имеют одинаковую координату x";
+				return;
+			}
 
 		TCubicSpline* spl = new TCubicSpline();
 		spl->MakeSpline(x, y, size);
